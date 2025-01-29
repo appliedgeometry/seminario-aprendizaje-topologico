@@ -1,2 +1,4 @@
-# seminario-aprendizaje-topologico
-Notas del seminario Aprendizaje Topológico impartido por @psuarezserrato en el posgrado de matemáticas de la UNAM durante el semestre 2025-2
+# Aprendizaje Topologico 2025-2
+Notas y material de apoyo del _Seminario Aprendizaje Topológico_ impartido por el Dr. Pablo Suárez-Serrrato ([@psuarezserrato](https://github.com/psuarezserrato)) durante el Semestre 2025-2 dentro del programa de Posgrado en Matemáticas de la UNAM.
+
+Temas
