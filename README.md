@@ -3,5 +3,5 @@ Notas y material de apoyo del _Seminario Aprendizaje Topológico_ impartido por 
 
 Temario
 
-* **[Complejos simpliciales y realizaciones geométricas](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/ApTD_CS.pdf)**
+* **[Complejos simpliciales y realizaciones geométricas](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/ApTD_CS.pdf)**   
   _Día de clase: 5/02/2025_
