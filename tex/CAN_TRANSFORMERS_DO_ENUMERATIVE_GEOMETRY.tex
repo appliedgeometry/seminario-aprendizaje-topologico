@@ -1,0 +1,538 @@
+\documentclass{beamer}
+\setbeamertemplate{theorems}[numbered]
+\usecolortheme{dracula}
+\usepackage[utf8]{inputenc}
+\usepackage[
+  main=spanish
+]{babel}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+
+\newcounter{Ejercicio}
+%\newcounter{Ejemplo}
+
+%\newtheorem{Theorem}{Teorema}[section]
+%\newtheorem{Lemma}[Theorem]{Lema}
+%\newtheorem{Corollary}[Theorem]{Corolario}
+%\newtheorem{Ejercicio}[Theorem]{Ejercicio}
+%
+%
+\newtheorem{Ejercicio}[theorem]{Ejercicio}%[count-ejercicio]
+
+\newtheorem{Ejemplo}{Ejemplo}
+
+%\newtheorem{Proposition}[Theorem]{Proposici\'on}
+%\newtheorem{Conjecture}[Theorem]{Conjecture}
+%\newtheorem{Definition}[Theorem]{Definici\'on}
+%\newtheorem{Example}[Theorem]{Ejemplo}
+%\newtheorem{Observation}[Theorem]{Observation}
+%\newtheorem{Remark}[Theorem]{Remark}
+
+\def \rk{{\mbox {rk}}\,}
+\def \dim{{\mbox {dim}}\,}
+\def \ex{\mbox{\rm ex}}
+\def\df{\buildrel \rm def \over =}
+\def\ind{{\mbox {ind}}\,}
+\def\Vol{\mbox{Vol}}
+\def\V{\mbox{Var}}
+\newcommand{\comp}{\mbox{\tiny{o}}}
+\newcommand{\QED}{{\hfill$\Box$\medskip}}
+
+
+\def\Z{{\bf Z}}
+\def\R\re
+\def\V{\bf V}
+\def\W{\bf W}
+\def\f{\tilde{f}_{k}}
+\def \e{\varepsilon}
+\def \la{\lambda}
+\def \vr{\varphi}
+\def \R{{\bf R}}
+\def \L{{\mathcal L}}
+
+\def \re{{\mathbb R}}
+\def \Q{{\mathbb Q}}
+\def \cp{{\mathbb CP}}
+\def \T{{\mathbb T}}
+\def \C{{\bf C}}
+\def \M{{\widetilde{M}}}
+\def \I{{\mathbb I}}
+\def \H{{\mathbb H}}
+\def \lv{\left\vert}
+\def \rv{\right\vert}
+\def \ov{\overline}
+\def \tx{{\widehat{x}}}
+\def \0{\lambda_{0}}
+\def \la{\lambda}
+\def \ga{\gamma}
+\def \de{\delta}
+\def \x{\widetilde{x}}
+\def \E{\mathbb{E}}
+\def \y{\widetilde{y}}
+\def \A{{\mathcal A}}
+\def\h{{\rm h}_{\rm top}(g)}
+\def\en{{\rm h}_{\rm top}}
+\def\F{{\mathcal F}}
+\def\co{\colon\thinspace}
+
+\usepackage{ragged2e}  % `\justifying` text
+\usepackage{booktabs}  % Tables
+\usepackage{tabularx}
+\usepackage{tikz}      % Diagrams
+\usetikzlibrary{calc, shapes, backgrounds}
+\usepackage{amsmath, amssymb}
+\usepackage{url}       % `\url`s
+\usepackage{listings}  % Code listings
+\usepackage{dsfont}
+\usepackage{mathtools}
+\usepackage{stmaryrd}
+\usepackage{bbold}
+\usepackage{xfrac}
+
+\title{Seminario de Aprendizaje Topológico 2025-2}
+\subtitle{Can Transformers do enumerate geometry? \\ por \\ B. Hashemi, R. G. Corominas y A. Giacchetto} %% that will be typeset on the
+\author{Miguel Evangelista}
+\logo{
+%\includegraphics[width=2cm]{logo-IMUNAM.png}
+\includegraphics[width=2cm]{LogoIMUNAM_Bco.png}
+}
+
+\begin{document}
+
+\frenchspacing
+
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+
+  \frame{\maketitle}
+
+  \AtBeginSection[]{% Print an outline at the beginning of sections
+    \begin{frame}<beamer>
+      \frametitle{Contenidos}
+      \tableofcontents[currentsection]
+    \end{frame}
+}
+
+\section{Abstract}
+
+\begin{frame}{Abstract}
+    El trabajo explora la aplicación de modelos Transformer para la geometría enumerativa computacional, centrado específicamente en el cálculo de los números de intersección de clase $\psi$ en el espacio de moduli de las curvas.
+    \newline
+    \pause
+
+    La contribución clave de este trabajo es la introducción de una nueva función de activación denominada \textit{Dynamic Range Activator (DRA)}, diseñada para capturar el comportamiento recursivo de los números de intersección.
+    
+\end{frame}
+
+\begin{frame}{Abstract}
+    Más allá del cálculo de los números de intersección, el estudio investiga la capacidad de los Transformers para modelar las restricciones de Virasoro basada en datos. 
+    \newline
+    \pause
+
+    
+    Además, mediante pruebas de hipótesis abductivas, se proporciona evidencia de que el modelo comprende varios valores que aparecen en la asíntota de gran género de los números de intersección de clases $\psi$.
+    
+\end{frame}
+
+\section{Introducción}
+\begin{frame}{Geometría enumerativa}
+    La geometría enumerativa es una rama de la geometría algebraica se ocupa de contar objetos geométricos o de encontrar invariantes que satisfagan determinadas condiciones geométricas \cite{Mumford1983, Katz2006}. 
+    \newline
+    \pause
+    
+    Una pregunta clásica de la geometría enumerativa es: ¿Cuántas cónicas pasan por cinco puntos dados del plano?
+    \newline
+    \pause
+    
+    Otra más actual es: ¿Cuántas curvas racionales de grado uno hay en un \textit{quintic threefold}? 
+\end{frame}
+
+\begin{frame}{Geometría enumerativa}
+    La resolución de estos problemas a menudo se reduce a calcular los números de intersección.
+    \newline
+    \pause
+    
+    Los números de intersección son fundamentales para calcular los volúmenes de Weil-Petersson, los números de Hurwitz, las invariantes de Gromov-Witten y las amplitudes de la gravedad cuántica. Un ejemplo de estos objetos son los números de intersección de clase $\psi$.
+\end{frame}
+
+\begin{frame}{Geometría enumerativa y IA}
+    Métodos recursivos tradicionales como la jerarquía KdV \cite{Witten1990, Kontsevich1992} tienen complejidades computacionales que crecen del orden $O(g!\cdot 2n)$, donde $g$ es el género y $n$ el número de puntos marcados, haciendo que los cálculos sean inviables incluso para curvas sencillas. 
+    \newline
+    \pause
+    
+    Es bien sabido que los Transformers tienen dificultades para aprender con patrones periódicos, por no hablar de los problemas recursivos \cite{Ziyin2020}.
+\end{frame}
+
+\begin{frame}{Geometría enumerativa y IA}
+    Se introduce una función de activación no lineal, el \textit{Activador de Rango Dinámico (DRA)}, que es particularmente adecuado para el aprendizaje de funciones recursivas.  
+    \newline
+    \pause
+    
+    Se desarrolla \textit{DynamicFormer}, un modelo Transformer diseñado para predecir números de intersección de clase $\psi$ dados los datos iniciales de la estructura cuántica de Airy \cite{Kontsevich2017}. 
+    \newline
+    \pause
+    
+   Con lo anterior se pretende introducir un nuevo paradigma para el uso de Transformadores en geometría algebraica.
+\end{frame}
+
+\section{Estructuras cuanticas de Airy}
+\begin{frame}{Estructuras cuanticas de Airy}
+    El enfoque conceptualmente más sencillo para calcular los números de intersección de clase $\psi$ implica el uso de restricciones de Virasoro reformuladas en el lenguaje de las estructuras cuánticas de Airy \cite{Kontsevich2017}. 
+    \newline
+    \pause
+    
+    Estas últimas son una reformulación algebraica de la recursividad topológica \cite{Eynard2007}. 
+\end{frame}
+
+\begin{frame}{Estructuras cuanticas de Airy}
+    Una estructura cuántica de Airy sobre un espacio vectorial complejo $V$, generada por $(x_{i})_{i\in I}$, es una familia de operadores diferenciales $(L_{i})_{i\in I}$ en el álgebra de Weyl sobre $V$ de la forma:
+    \newline
+    
+    \includegraphics[width=\linewidth]{2-1.png}
+    \newline
+    \pause
+
+    Formando una subálgebra del álgebra de Weyl, donde $\delta_{i}=\delta_{x}^{i}$ y $A_{i,a,b} =A_{i,b,a}$, $B^{b}_{i,a}$, $C^{a,b}_{i}=C^{b,a}_{i}$, y $D_{i}$, son escalares indexados por elementos en $I$. $h$ es un parámetro formal que lleva la cuenta del género.
+\end{frame}
+
+\begin{frame}{Estructuras cuanticas de Airy}
+    Dada una estructura cuántica de Airy, se puede encontrar unívocamente una función formal $Z$ sobre $V$, llamada función de partición, que es anulada por los operadores diferenciales $(L_i)_{i \in I}$. 
+    \newline
+    \pause
+    
+    Más precisamente, se cumple el siguiente teorema.
+    \newline
+    \pause
+    
+    \includegraphics[width=\linewidth]{2-2y2-3.png}
+\end{frame}
+
+\begin{frame}{Estructuras cuanticas de Airy}
+    Los elementos $F_{g,n} = \sum_{d_{1},...,d_{n} \in I} F_{g;d_{1},...,d_{n}} x^{d_{1}, ..., x_{d_{n}}}$ son tensores simétricos de rango $n$ sobre $V^{*}$. 
+    \newline
+    \pause
+    
+    La colección de coeficientes $(A, B, C, D)$ también puede considerarse como tensores, y a menudo nos referiremos a ellos como los datos iniciales de la estructura cuántica de Airy.
+\end{frame}
+
+
+\begin{frame}{Estructuras cuanticas de Airy}
+    Para una estructura cuántica de Airy dada, los coeficientes $F_{g;d_{1},...,d_{n}}$, llamados amplitudes de la estructura cuántica de Airy, se determinan recursivamente sobre la característica de Euler $2g - 2 + n$. 
+    \newline
+    \pause
+    
+    Para los valores bajos de $g$ y $n$, los casos base vienen dados por 
+    $$F_{0;i,j,k} := A_{i,j,k} \text{ y }F_{1;i} := D_{i},$$ donde $A_{i,j,k}$ y  $D_{i}$ forman parte de los datos de la estructura cuántica de Airy. 
+\end{frame}
+
+\begin{frame}{Estructuras cuanticas de Airy}
+    Para valores más altos de $g$ y $n$ que satisfagan $2g - 2 + n > 0$, la fórmula de recursión, conocida como recursión topológica, viene dada por
+    \newline
+    \pause
+
+    \includegraphics[width=\linewidth]{2-4.png}
+\end{frame}
+
+\begin{frame}{Estructuras cuanticas de Airy}
+    En general, el cálculo de las amplitudes tiene una complejidad computacional de $O(g!\cdot 2n)$, lo que hace problemático el cálculo de las amplitudes en géneros altos.
+    \newline
+    \pause
+
+    Para espacios vectoriales de dimensión alta $V$, encontrar una solución resulta cada vez menos práctico, si no imposible.
+\end{frame}
+
+\begin{frame}{Estructuras cuanticas de Airy}
+    El ejemplo central es el asociado a los números de intersección de clase $\psi$. 
+    \newline
+    \pause
+    
+    En este caso, el espacio vectorial subyacente está generado por vectores indexados por $I = \mathbb{N}$, los enteros no negativos. 
+    \newline
+    \pause
+    
+    Los operadores diferenciales $(L_{i})_{i\geq 0}$ vienen determinados por los tensores
+    \includegraphics[width=\linewidth]{2-5.png}
+\end{frame}
+
+\begin{frame}{Estructuras cuanticas de Airy}
+    Los operadores resultantes, tras desplazar los índices como $L_{i} = L_{i-1}$, forman una representación del álgebra de Virasoro: 
+    $$[L_i,L_j] = h^{2}(i - j)L_{i+j}$$
+    para todo $i \geq -1$. 
+    \newline
+    \pause
+    
+    Sorprendentemente, las amplitudes asociadas coinciden con los números de intersección de clase $\psi$. 
+    \newline
+    \pause
+    
+    \includegraphics[width=\linewidth]{2-6.png}
+\end{frame}
+
+\begin{frame}{Estructuras cuanticas de Airy}
+    Nos centramos en la elección específica de los datos de la estructura cuántica de Airy dados por la ecuación (2.5), calculando así los números de intersección de clase $\psi$. 
+    \newline
+    \pause
+    
+    Para facilitar la notación, denotaremos una partición genérica de $d_{g,n}$ de longitud $n$ como $d = (d_1,\cdot, d_n)$. El número de intersección de clase $\psi$ asociado se denominará $⟨d⟩_{g,n} := \langle\tau d_1 \cdots τdn \rangle_{g,n}$.
+\end{frame}
+
+
+\section{Métodos}
+\begin{frame}{Dynamic Range Activator}
+    Como se ha visto a lo largo del exposición, la naturaleza recursiva de las funciones en la geometría enumerativa, introduce una gran complejidad en la modulación y aproximación de dichas funciones.
+    \newline
+    \pause
+    
+    Por lo tanto, para capturar dicho comportamiento y realizar una inferencia adecuada, se introduce el Activador de Rango Dinámico (DRA), y el modelo Tranformer llamado DynamicFormer. 
+    \newline
+    \pause
+    
+    El DRA está diseñado para manejar las propiedades de crecimiento recursivo y factorial inherentes a los problemas enumerativos con una sobrecarga computacional mínima y puede integrarse en las redes neuronales existentes sin requerir cambios arquitectónicos significativos.
+\end{frame}
+
+\begin{frame}{Dynamic Range Activator}
+    El DRA integra los componentes armónicos e hiperbólicos de la siguiente manera,
+    \newline
+    \pause
+    
+    \includegraphics[width=\linewidth]{3-1.png}
+
+    donde $a, b, c, d$ son parámetros aprendibles. 
+    \newline
+    \pause
+    
+    Permite a la función modelar simultáneamente datos periódicos (a través del seno y el coseno) y respuestas de crecimiento rápido (a través de la tangente hiperbólica). 
+\end{frame}
+
+\begin{frame}{Dynamic Range Activator}
+    DRA se inspira en la función no lineal Snake (Ziyin et al., 2020). 
+    \newline
+    \pause
+    
+    Sin embargo, Snake solo ofrece una modulación sinusoidal añadida a un término lineal que, si bien proporciona una transformación no lineal básica, carece de la flexibilidad adicional para los efectos de amortiguación o amplificación rápida que pueden proporcionar las tangentes hiperbólicas.
+\end{frame}
+
+\begin{frame}{Dynamic Range Activator}
+    El primer experimento es entrenar una red neuronal totalmente conectada con dos capas ocultas formadas por 64 y 32 neuronas y con funciones de activación ReLU, Tanh, Gated Linear Unit (GLU) y Sanke. Además, se compara con una red Kolmogorov-Arnold (KAN). Los resultados se muestran en la Figura 1.
+    \newline
+    \pause
+
+    Las funciones de activación antes mencionadas, son incapaces de capturar la naturaleza recursiva de la función subyacente en un tiempo de entrenamiento finito.
+    \newline
+    \pause
+
+    Por el contrario, DRA muestra una mejor capacidad para capturar las fluctuaciones correctas.
+\end{frame}
+
+\begin{frame}{Dynamic Range Activator}
+     \includegraphics[width=\linewidth]{Fig5-a.png}
+\end{frame}
+
+\begin{frame}{Dynamic Range Activator}
+     \includegraphics[width=\linewidth]{Fig5-b.png}
+\end{frame}
+
+\section{Resultados}
+\begin{frame}{Resultados}
+    Para evaluar el rendimiento, consideramos dos configuraciones: Dentro de la distribución (ID) y fuera de la distribución (OOD).
+    Utilizamos $R^{2}$ para comparar los resultados y evaluar la la tarea de regresión de números de intersección.
+    \newline
+    \pause
+
+    Para estimar la incertidumbre en las predicciones, utilizamos Predicción Conforme (CP) (Vovk et al., 1999), una técnica probabilística que genera intervalos de predicción sin asumir una distribución específica de los datos. 
+\end{frame}
+
+\begin{frame}{Coeficiente de determinación}
+    La métrica $R^2$ (\textit{coeficiente de determinación}), mide qué tan bien un modelo de regresión explica la variabilidad de la variable dependiente en función de las variables independientes. \newline
+    \pause
+    
+    Se define como:  
+    $$R^2 = 1 - \frac{SS_{\text{residual}}}{SS_{\text{total}}}$$
+    donde:
+    \begin{itemize}
+        \item $SS_{\text{residual}}$ es la suma de los errores cuadráticos entre los valores reales y los predichos.
+        \item $SS_{\text{total}}$ es la suma de los errores cuadráticos entre los valores reales y su media.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Coeficiente de determinación}
+    Interpretación
+    \begin{itemize}
+        \item $R^2 = 1$: El modelo explica toda la variabilidad de los datos.
+        \item $R^2 = 0$: El modelo no explica ninguna variabilidad mejor que la media de los datos.
+        \item $R^2 < 0$: El modelo es peor que simplemente usar la media como predicción.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Configuración ID}
+    En la configuración ID, se examinan datos con los mismos géneros que los datos de entrenamiento, es decir, $g_{ID} = [1, 13]$, pero con un número diferente y desconocido de puntos marcados $n_{ID}\in[35,11]$. 
+    \newline
+    \pause
+    
+    En esta configuración, el $R^{2}$, la anchura conforme (CW) se muestran en la siguiente tabla
+\end{frame}
+
+\begin{frame}{Configuración ID}
+    \includegraphics[height=0.7\textheight, keepaspectratio]{tabla1a.png}
+\end{frame}
+
+\begin{frame}{Configuración OOD}
+    En la configuración OOD, se examinan datos con un género superior al de los datos de entrenamiento, concretamente $g_{OOD} = [14, 15, 16, 17]$, y un número de puntos marcados $n_{OOD}\in [1,9]$. 
+    \newline
+    \pause
+    
+    En esta configuración, el $R^{2}$, la anchura conforme (CW) se muestran en la siguiente tabla
+\end{frame}
+
+\begin{frame}{Configuración OOD}
+    \includegraphics[width=\linewidth]{tabla1b.png}
+\end{frame}
+
+\section{Representacion de los datos}
+\begin{frame}{Representacion de los datos}
+    Los datos de entrada durante el entrenamiento consistieron en los tensores dispersos $B$ y $C$ de la ecuación (2.5), el género $g$, el número de puntos $n$, y las particiones $d = (d_1, . . . , d_n)$ de $d_{g,n}.$
+    \newline
+    \pause
+
+    No se incluyeron $A$ y $D$ como entrada, ya que son condiciones iniciales fijas para todos los números de intersección de clase $\psi$.
+    \newline
+    \pause
+    
+    Consideraremos valores de $g$ y $n$ tales que la dimensión $d_{g,n}$ nunca superará $d_{max} = 100$, los datos iniciales consistirán sólo en un número finito de datos. 
+\end{frame}
+
+\begin{frame}{Representacion de los datos}
+    Los datos iniciales durante el entrenamiento se representaron de la siguiente manera.
+    \begin{itemize}
+        \item Datos iniciales de $B$: \\
+        Un tensor $B_{k}\in \mathbf{R}^{d_{g,n}\times d_{g,n}\times d_{g,n}}$. 
+        Dicho tensor une la intersección $i,j$ del mismo género (ver la ecuación (2.4)). 
+        \newline
+        \pause
+        
+        Dado que se trata de un tensor disperso con $d_{g,n} \leq d_{max} = 100$, optamos por representar sus componentes distintos de cero en el formato COO. En el formato COO, $B$ se representa como un conjunto de 4 tuplas, cada una de las cuales contiene los índices y el valor distinto de cero correspondiente:
+        $$B=\{ (i,j,k,B^{k}_{i,j}) | B^{k}_{i,j}\neq = 0 \}$$
+        donde $i, j, k \in [0, d_{g,n} ]$, y $B^{k}_{i,j}$ son las componentes no nulas del tensor. Con esta eleccion de $d_{max}$ la longitud máxima de $B$ es aproximadamente $1500$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Representacion de los datos}
+    \begin{itemize}
+        \item Datos iniciales de $C$: \\
+        Un tensor $C_{i}^{j,k}\in \mathbf{R}^{d_{g,n}\times d_{g,n}\times d_{g,n}}$. 
+        Dicho tensor une números de intersección de distintos géneros (ver la ecuación (2.4)). 
+        \newline
+        \pause
+        
+        De nuevo, dado que se trata de un tensor disperso con $d_{g,n} \leq d_{max} = 100$, optamos por representar sus componentes distintos de cero en el formato COO. En el formato COO, C se representa como un conjunto de 4 tuplas, cada una de las cuales contiene los índices y el valor distinto de cero correspondiente:
+        $$B=\{ (i,j,k,C_{i}^{j,k}) | C_{i}^{j,k}\neq = 0 \}$$
+        donde $i, j, k \in [0, d_{g,n} ]$, y $C_{i}^{j,k}$ son las componentes no nulas del tensor. Con esta eleccion de $d_{max}$ la longitud máxima de $B$ es aproximadamente $1500$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Representacion de los datos}
+    En esta configuración, se excluyen los datos iniciales de $C$. Esto había sido observado por Aggarwal (Aggarwal, 2021), que los términos $C$ contribuyen cuadráticamente, mientras que el término $B$ contribuye linealmente y tiene un efecto más fuerte en el cálculo de las intersecciones de clase $\psi$.
+\end{frame}
+
+\begin{frame}{Representacion de los datos}
+    \begin{itemize}
+        \item Particiones:\\
+        Los números de intersección $\langle d \rangle_{g,n}$ están etiquetados por particiones $d = (d_1,\cdots, d_n) \in N^{n}$ de $d_{g,n}$ de longitud $n$. 
+        \newline
+        \pause
+        
+        Una característica importante de los números de intersección (y más en general, de las amplitudes calculadas a partir de estructuras cuánticas de Airy) es que son invariantes bajo permutación de los índices, es decir, de los elementos de la partición $d$. 
+        \newline
+        \pause
+        
+        Por ejemplo, dada una partición $d = (3,0,0)$, tenemos $$\langle 3,0,0 \rangle_{1,3} = \langle 0,3,0 \rangle_{1,3} = \langle 0,0,3 \rangle_{1,3}.$$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Representacion de los datos}
+    Entrenamos el modelo con datos hasta el género $g = 13$ y luego le encargamos que predijera los números de intersección para los géneros $g = 14, 15, 16 \text{ y } 17$.
+\end{frame}
+
+\section{Modelo}
+\begin{frame}{Modelo}
+    Los Transformers pueden manejar eficazmente este el tipo de estructura presentada anteriormente, debido a sus mecanismos de atención enmascarada, que son expertos en la captura de la estructura dispersa de $B$.
+    \newline
+    \pause
+        
+    Por otra parte, la entrada $d$ es invariante de permutación, y los Transformers se adaptan naturalmente a esta propiedad a través de su mecanismo de auto-atención que trata los elementos de entrada simétricamente sin plantear ningún sesgo de ordenación.
+\end{frame}
+
+\begin{frame}{Modelo}
+    \includegraphics[height=0.7\textheight, keepaspectratio]{comparación.png}
+\end{frame}
+
+\begin{frame}{Modelo}
+    La base de DynamicFormer, consiste en dos Transformadores modificados: uno discreto, que actúa sobre $d$, y otro continuo, que actúa sobre el tensor $B$.
+    \newline
+    \pause
+        
+    Las posiciones de los elementos en $B$, representados en formato COO, corresponden a combinaciones particulares de índices que calculan los números de intersección. 
+\end{frame}
+
+\begin{frame}{Modelo}
+    Finalmente toda la información incorporada es agregada por la capa Principal Neighbourhood Aggregation (PNA) (Corso et al., 2020), agrupando la información de las modalidades $(B,d)$.
+    \newline
+    \pause
+    
+    Una vez que la información de estas dos ramas, para cada muestra, se modula con sus correspondientes atributos posicionales de género y número de puntos marcados, $(g, n)$, se mapea a las salidas, es decir, números de intersección de clase $\psi$, mediante una cabezal MLP. 
+    \newline
+    \pause
+    
+    DRA es la función de activación no lineal utilizada a lo largo de estos bloques.
+\end{frame}
+
+\begin{frame}{Modelo}
+    \includegraphics[height=0.7\textheight, keepaspectratio]{Modelo.png}
+\end{frame}
+
+\begin{frame}{Modelo}
+    Ilustración de DynamicFormer. Procesa dos modalidades principales de entrada: 
+    \begin{itemize}
+        \item El dato $B$ de la estructura cuántica de Airy como secuencia ordenada y las particiones d como conjunto invariante de permutaciones. 
+        \item El género $g$ y el número de puntos $n$ se incorporan como propiedades de entrada, moduladas con las modalidades principales en varias etapas.
+    \end{itemize}
+    Todas las capas, incluidos los bloques de Atención Multicabezal (MHA), utilizan la función de activación no lineal Activador de Rango Dinámico (DRA).  
+    \newline
+    \pause
+    
+     El cabezal de predicción DRA es un MLP de 2 capas que predice números de intersección de clase $\psi$ en escala logarítmica.
+\end{frame}
+
+\section{Conclusión}
+\begin{frame}{Conclusión}
+    El trabajo exploró si los Transformers pueden aprender y aplicar conceptos de geometría enumerativa y recursividad topológica, enfocándose en el cálculo de números de intersección de clase $\psi$.
+    \newline
+    \pause
+    
+    Para ello, se introdujo DynamicFormer, un modelo basado en Transformers diseñado para predecir estos valores en un entorno de disparo cero. Un hallazgo clave fue que captar la naturaleza recursiva de las intersecciones representa un desafío significativo para estos modelos. 
+\end{frame}
+
+\begin{frame}{Conclusión}    
+    Para mejorar su rendimiento, se propuso una nueva función de activación, Dynamic Range Activator (DRA), que optimiza la precisión en mapas recursivos. 
+    \newline
+    \pause
+    
+    Además, se enfatizó la importancia de estimar la incertidumbre en las predicciones, incorporando técnicas de Conformal Prediction para hacer los resultados más fiables y explicables en el contexto del descubrimiento matemático.
+\end{frame}
+
+
+\section{Referencias}
+\begin{frame}{Recurso Adicionales}
+    \begin{itemize}
+        \item \href{https://github.com/Baran-phys/DynamicFormer}{Github}
+        \item \href{https://colab.research.google.com/drive/1VblCUmNt6fUqZW52dbGjnfKx41Q4ywGO?usp=sharing}{Colab}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Referencias}
+    \bibliographystyle{alpha} 
+    \bibliography{sample}
+\end{frame}
+    
+\end{document}
+ 
