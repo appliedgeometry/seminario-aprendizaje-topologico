@@ -12,6 +12,6 @@ Temario
 * **[Can Transformer do enumerate geometry?](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/CAN_TRANSFORMERS_DO_ENUMERATIVE_GEOMETRY_.pdf)**   
   _Día de clase: 19/02/2025_
 
-* **[Message_Passing_Topological_NNs](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/Message_Passing_Topological_NNs_Survey.pdf)**   
+* **[Message-Passing Topological NNs](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/Message_Passing_Topological_NNs_Survey.pdf)**   
   _Día de clase: 05/03/2025_
 
