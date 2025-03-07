@@ -1,16 +1,19 @@
 # Aprendizaje Topológico 2025-2
-Notas y material de apoyo del _Seminario Aprendizaje Topológico_ impartido por el Dr. Pablo Suárez-Serrrato ([@psuarezserrato](https://github.com/psuarezserrato)) durante el Semestre 2025-2 dentro del programa de Posgrado en Matemáticas de la UNAM.
+Notas y material de apoyo del _Seminario de Aprendizaje Topológico_ impartido por el Dr. Pablo Suárez-Serrrato ([@psuarezserrato](https://github.com/psuarezserrato)) durante el Semestre 2025-2 dentro del programa de Posgrado en Matemáticas de la UNAM.
 
 Temario
 
 * **[Complejos simpliciales y realizaciones geométricas](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/ApTD_CS.pdf)**   
-  _Día de clase: 5/02/2025_
+  _Día de clase: 05/02/2025_
 
 * **[SpatioFormer: A geo-encoded transformer](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/Seminario_Aprendizaje_Topologico.pdf)**   
   _Día de clase: 12/02/2025_
 
 * **[Can Transformer do enumerate geometry?](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/CAN_TRANSFORMERS_DO_ENUMERATIVE_GEOMETRY_.pdf)**   
   _Día de clase: 19/02/2025_
+
+* **[A Survey of Machine Learning Methods]([https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/CAN_TRANSFORMERS_DO_ENUMERATIVE_GEOMETRY_.pdf](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/A%20Survey%20of%20Topological%20Machine%20Learning%20Methods.pdf))**   
+  _Día de clase: 26/02/2025_
 
 * **[Message-Passing Topological NNs](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/Message_Passing_Topological_NNs_Survey.pdf)**   
   _Día de clase: 05/03/2025_
