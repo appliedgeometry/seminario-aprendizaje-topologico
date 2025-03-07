@@ -6,13 +6,13 @@ Temario
 * **[Complejos Simpliciales y Realizaciones Geométricas](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/01_Complejos_Simpliciales_y_Realizaciones_Geométricas.pdf)**  
   _Día de clase: 05/02/2025_
 
-* **[SpatioFormer: A Geo-encoded Transformer](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/02_SpatioFormer-_A_Geo-encoded_Transformer.pdf)**  
+* **[SpatioFormer: A Geo-encoded Transformer](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/02_Spatioformer-_A_Geo-encoded_Transformer.pdf)**  
   _Día de clase: 12/02/2025_
 
 * **[Can Transformers Do Enumerative Geometry?](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/03_Can_Transformers_Do_Enumerative_Geometry.pdf)**   
   _Día de clase: 19/02/2025_
 
-* **[A Survey of Machine Learning Methods](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/04_A_Survey_of_Topological_Machine_Learning_Methods.pdf)**  
+* **[A Survey of Topological Machine Learning Methods](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/04_A_Survey_of_Topological_Machine_Learning_Methods.pdf)**  
   _Día de clase: 26/02/2025_
 
 * **[Message-Passing Topological NNs Survey](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/05_Message-Passing_Topological_NNs_Survey.pdf)**   
