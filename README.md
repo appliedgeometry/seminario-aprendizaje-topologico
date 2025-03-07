@@ -3,18 +3,18 @@ Notas y material de apoyo del _Seminario de Aprendizaje Topológico_ impartido p
 
 Temario
 
-* **[Complejos simpliciales y realizaciones geométricas](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/ApTD_CS.pdf)**   
+* **[Complejos Simpliciales y Realizaciones Geométricas](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/Complejos_Simpliciales_y_Realizaciones_Geométricas.pdf)**
   _Día de clase: 05/02/2025_
 
-* **[SpatioFormer: A geo-encoded transformer](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/Seminario_Aprendizaje_Topologico.pdf)**   
+* **[SpatioFormer: A Geo-encoded Transformer](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/SpatioFormer-_A_Geo-encoded_Transformer.pdf)**
   _Día de clase: 12/02/2025_
 
-* **[Can Transformer do enumerate geometry?](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/CAN_TRANSFORMERS_DO_ENUMERATIVE_GEOMETRY_.pdf)**   
+* **[Can Transformers Do Enumerative Geometry?](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/CAN_TRANSFORMERS_DO_ENUMERATIVE_GEOMETRY_.pdf)**   
   _Día de clase: 19/02/2025_
 
-* **[A Survey of Machine Learning Methods]([https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/CAN_TRANSFORMERS_DO_ENUMERATIVE_GEOMETRY_.pdf](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/A%20Survey%20of%20Topological%20Machine%20Learning%20Methods.pdf))**   
+* **[A Survey of Machine Learning Methods](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/A_Survey_of_Topological_Machine_Learning_Methods.pdf)**
   _Día de clase: 26/02/2025_
 
-* **[Message-Passing Topological NNs](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/Message_Passing_Topological_NNs_Survey.pdf)**   
+* **[Message-Passing Topological NNs](https://github.com/appliedgeometry/seminario-aprendizaje-topologico/blob/main/pdf/Message-Passing_Topological_NNs_Survey.pdf)**   
   _Día de clase: 05/03/2025_
 
